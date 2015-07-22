@@ -1,17 +1,16 @@
 require 'open-uri'
 require 'nokogiri'
 require 'pstore'
+require 'yaml'
+require 'twitter'
 
 class TmNCTNews
   def run
     fetch
 
-    puts @latest_news
     if is_updated?
-      puts "updated..."
       save
-    else
-      puts "not updated..."
+      tweet
     end
   end
 
@@ -44,6 +43,21 @@ class TmNCTNews
       db[:pubdate] = @latest_news[:pubdate]
       db[:category] = @latest_news[:category]
     end
+  end
+
+  def tweet
+    twitter_api_keys = YAML.load_file('./config/twitter_api_keys.yml')
+    client = Twitter::REST::Client.new do |config|
+      config.consumer_key = twitter_api_keys['consumer_key']
+      config.consumer_secret = twitter_api_keys['consumer_secret']
+      config.access_token = twitter_api_keys['access_token']
+      config.access_token_secret = twitter_api_keys['access_token_secret']
+    end
+
+    tweet = "#{@latest_news[:title]}\n"
+    tweet << "#{@latest_news[:link]} #苫小牧高専\n"
+
+    client.update(tweet)
   end
 end
 
