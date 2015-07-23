@@ -29,6 +29,12 @@ class TmNCTNews
     @latest_news[:link] = item.search('link').text
     @latest_news[:pubdate] = DateTime.parse(item.search('pubDate').text)
     @latest_news[:category] = item.search('category').text
+
+    @latest_news[:img_urls] = []
+    html = Nokogiri::HTML(open(@latest_news[:link]))
+    html.search('#main').search('img').each do |img|
+      @latest_news[:img_urls].push(img.attributes['src'].value)
+    end
   end
 
   def is_updated?
@@ -46,6 +52,7 @@ class TmNCTNews
       db[:link] = @latest_news[:link]
       db[:pubdate] = @latest_news[:pubdate]
       db[:category] = @latest_news[:category]
+      db[:img_urls] = @latest_news[:img_urls]
     end
   end
 
@@ -61,7 +68,15 @@ class TmNCTNews
     tweet = "#{@latest_news[:title]}\n"
     tweet << "#{@latest_news[:link]} #苫小牧高専\n"
 
-    client.update(tweet)
+    if @latest_news[:img_urls].empty?
+      client.update(tweet)
+    else
+      media_ids = @latest_news[:img_urls].map do |img_url|
+        client.upload open(img_url)
+      end
+
+      client.update(tweet, {media_ids: media_ids.first(4).join(',')})
+    end
   end
 
   def output_log(updated, title = nil)
