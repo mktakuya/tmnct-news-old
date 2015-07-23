@@ -3,6 +3,7 @@ require 'nokogiri'
 require 'pstore'
 require 'yaml'
 require 'twitter'
+require 'logger'
 
 class TmNCTNews
   def run
@@ -11,6 +12,9 @@ class TmNCTNews
     if is_updated?
       save
       tweet
+      output_log(true, @latest_news[:title])
+    else
+      output_log(false)
     end
   end
 
@@ -58,6 +62,16 @@ class TmNCTNews
     tweet << "#{@latest_news[:link]} #苫小牧高専\n"
 
     client.update(tweet)
+  end
+
+  def output_log(updated, title = nil)
+    logger = Logger.new('./log/logfile.log')
+
+    if updated
+      logger.info("Updated! Title: #{title}")
+    else
+      logger.info('Not Updated...')
+    end
   end
 end
 
