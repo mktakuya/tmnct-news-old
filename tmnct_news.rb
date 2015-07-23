@@ -21,9 +21,9 @@ class TmNCTNews
   private
   def fetch
     @latest_news = {}
-    url = 'http://www2.tomakomai-ct.ac.jp/feed'
-    doc = Nokogiri::XML(open(url))
-    item = doc.search('item')[0]
+    feed_url = 'http://www2.tomakomai-ct.ac.jp/feed'
+    feed = Nokogiri::XML(open(feed_url))
+    item = feed.search('item')[0]
 
     @latest_news[:title] = item.search('title').text
     @latest_news[:link] = item.search('link').text
