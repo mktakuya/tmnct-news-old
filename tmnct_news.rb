@@ -5,7 +5,7 @@ require 'yaml'
 require 'twitter'
 require 'logger'
 
-class TmNCTNews
+module TmNCTNews
   def run
     fetch
 
@@ -91,7 +91,6 @@ class TmNCTNews
 end
 
 if $0 == __FILE__
-  client = TmNCTNews.new
-  client.run
+  TmNCTNews.run
 end
 
