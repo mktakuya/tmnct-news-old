@@ -19,6 +19,7 @@ module TmNCTNews
       end
     end
 
+    private_class_method
     def fetch
       @latest_news = {}
       feed_url = 'http://www2.tomakomai-ct.ac.jp/feed'
