@@ -1,6 +1,5 @@
-config/twitter_api_keys.yml
+config/*.yml
 cache/*
-log/*
 
 # Created by https://www.gitignore.io
 
