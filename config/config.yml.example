@@ -1,0 +1,19 @@
+feed_url: "http://www2.tomakomai-ct.ac.jp/feed"
+
+notifications:
+  email:
+    from: "YOUR EMAIL ADDRESS"
+    server:
+      enable_starttls_auto: true
+      address: "YOUR EMAIL SERVER ADDRESS"
+      domain: "YOUR EMAIL SERVER DOMAIN"
+      port: YOUR_EMAIL_SERVER_PORT
+      authentication: "YOUR_EMAIL_SERVER_AUTHENTICATION"
+      user_name: "YOUR_EMAIL_SERVER_USER_NAME"
+      password: "YOUR_EMAIL_SERVER_PASSWORD"
+  twitter:
+    consumer_key: "YOUR_TWITTER_CONSUMER_KEY"
+    consumer_secret: "YOUR_TWITTER_CONSUMER_SECRET"
+    access_token: "YOUR_TWITTER_ACCESS_TOKEN"
+    access_token_secret: "YOUR_TWITTER_ACCESS_TOKEN_SECRET"
+
