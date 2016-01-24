@@ -1,6 +1,10 @@
+require 'logger'
+require 'date'
 require 'open-uri'
 require 'nokogiri'
 require 'pstore'
+
+LOGGER = Logger.new("./log/#{Date.today.to_s}.log")
 
 class TmNCTNews
   def initialize(config)
@@ -13,9 +17,12 @@ class TmNCTNews
   def run
     @latest_news = fetch
     if is_updated?
+      LOGGER.info("Updated!! Title: #{@latest_news.title} URL: #{@latest_news.link}")
       save
       load_notifiers
       notify
+    else
+      LOGGER.info("None")
     end
   end
 
