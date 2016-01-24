@@ -1,5 +1,5 @@
 config/*.yml
-cache/*
+cache/*.db
 log/*.log
 
 # Created by https://www.gitignore.io
