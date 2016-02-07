@@ -27,4 +27,3 @@ class TwitterNotifier
     end
   end
 end
-

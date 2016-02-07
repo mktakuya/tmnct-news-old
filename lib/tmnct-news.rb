@@ -81,4 +81,3 @@ class TmNCTNews
 
   News = Struct.new("News", :title, :link, :pubdate, :category, :img_urls, :body)
 end
-

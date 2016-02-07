@@ -37,4 +37,3 @@ class EmailNotifier
     end
   end
 end
-
