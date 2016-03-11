@@ -1,5 +1,10 @@
 source "https://rubygems.org"
 
 gem 'nokogiri'
-gem 'pony'
+
+# for notifiers
+# email
+gem 'sendgrid-ruby'
+
+# twitter
 gem 'twitter'
