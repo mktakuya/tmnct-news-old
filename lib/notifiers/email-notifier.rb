@@ -1,5 +1,6 @@
 require 'yaml'
 require 'sendgrid-ruby'
+require 'sequel'
 
 class EmailNotifier
   def initialize(news, config)
@@ -10,7 +11,11 @@ class EmailNotifier
   def notify
     client = SendGrid::Client.new(api_key: @email_config["sendgrid_api_key"])
 
-    to_addresses = YAML.load_file('./config/to_addresses.yml')
+    db = Sequel.connect(@email_config["database_url"])
+    to_addresses = []
+    db[:subscribers].select(:email).each { |row| to_addresses.push row[:email] }
+    db.disconnect
+
     header = Smtpapi::Header.new
     header.add_to(to_addresses)
 
