@@ -6,6 +6,7 @@ gem 'nokogiri'
 # email
 gem 'sendgrid-ruby'
 gem 'sequel'
+gem 'pg'
 
 # twitter
 gem 'twitter'
