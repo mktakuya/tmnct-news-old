@@ -10,3 +10,8 @@ gem 'pg'
 
 # twitter
 gem 'twitter'
+
+# Testing
+gem 'rspec'
+gem 'rspec-expectations'
+gem 'rspec-its'
