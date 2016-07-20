@@ -1,9 +1,10 @@
 require 'spec_helper'
 require 'tmnct-news'
+require 'erb'
 require 'yaml'
 
 describe 'TmNCTNews' do
-  let(:config) { YAML.load_file("./config/config.yml.example") }
+  let(:config) { YAML.load(ERB.new(IO.read('./config/config.yml')).result) }
   before { @client = TmNCTNews.new(config) }
 
   describe '#initialize' do
