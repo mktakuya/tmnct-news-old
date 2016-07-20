@@ -1,3 +1,4 @@
+.rspec
 config/*.yml
 cache/*.db
 log/*.log

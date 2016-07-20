@@ -7,6 +7,8 @@ require 'pstore'
 LOGGER = Logger.new("./log/#{Date.today.to_s}.log")
 
 class TmNCTNews
+  attr_reader :notifiers
+
   def initialize(config)
     @config = config
     @cached_news = PStore.new('./cache/latest.db')
