@@ -4,7 +4,7 @@ gem 'nokogiri'
 
 # for notifiers
 # email
-gem 'sendgrid-ruby'
+gem 'sendgrid-ruby', '1.1.6'
 gem 'sequel'
 gem 'pg'
 
