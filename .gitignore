@@ -2,6 +2,7 @@
 config/*.yml
 cache/*.db
 log/*.log
+.envrc
 
 # Created by https://www.gitignore.io
 
