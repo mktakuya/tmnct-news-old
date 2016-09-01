@@ -27,7 +27,7 @@ class EmailNotifier
       text_body << @news.link + "\n"
     end
 
-    html_body = text_body.split.map { |p|
+    html_body = text_body.split("\n").map { |p|
       if p.include?("http://")
         "<p><a href=\"#{p}\">#{p}</a></p>"
       else
