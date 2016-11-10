@@ -1,6 +1,6 @@
 # 苫小牧高専ニュースBot
 ## 概要
-苫小牧高専のニュースを http://www2.tomakomai-ct.ac.jp/feed/ から拾ってきて、Twitterやメールで通知するBot。
+苫小牧高専のニュースを http://www.tomakomai-ct.ac.jp/feed/ から拾ってきて、Twitterやメールで通知するBot。
 
 ## 使い方
 ### 設定ファイルを用意する
