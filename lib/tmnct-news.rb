@@ -78,7 +78,13 @@ class TmNCTNews
   end
 
   def notify
-    @notifiers.each { |notifier| notifier.notify }
+    @notifiers.each do |notifier|
+      begin
+        notifier.notify
+      rescue
+        LOGGER.error("An error occurred on #{notifier.to_s}")
+      end
+    end
   end
 
   News = Struct.new("News", :title, :link, :pubdate, :category, :img_urls, :body)
