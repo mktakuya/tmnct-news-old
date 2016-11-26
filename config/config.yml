@@ -10,4 +10,9 @@ notifications:
     consumer_secret: <%= ENV['TWITTER_CONSUMER_SECRET'] %>
     access_token: <%= ENV['TWITTER_ACCESS_TOKEN'] %>
     access_token_secret: <%= ENV['TWITTER_ACCESS_TOKEN_SECRET'] %>
-
+  twilio:
+    account_sid: <%= ENV['TWILIO_ACCOUNT_SID'] %>
+    auth_token: <%= ENV['TWILIO_AUTH_TOKEN'] %>
+    from_number: <%= ENV['TWILIO_FROM_NUMBER'] %>
+    to_number: <%= ENV['TWILIO_TO_NUMBER'] %>
+    twiml_url: <%= ENV['TWILIO_TWIML_URL'] %>
