@@ -1,25 +1,41 @@
 # 苫小牧高専ニュースBot
 ## 概要
-苫小牧高専のニュースを http://www.tomakomai-ct.ac.jp/feed/ から拾ってきて、Twitterやメールで通知するBot。
+苫小牧高専のニュースを http://www.tomakomai-ct.ac.jp/feed/ から拾ってきて、Twitterやメール、電話で通知するBot。
 
 ## 使い方
-### 設定ファイルを用意する
+### 環境変数の設定
+
+direnvなどを使って環境変数を設定する。
 
 ```
-$ cp config/config.yml.example config/config.yml
-$ cp config/to_addresses.yml.example config/to_addresses.yml
+export FEED_URL='http://www.tomakomai-ct.ac.jp/feed/'
+
+export SENDGRID_API_KEY='YOUR_SENDGRID_KEY'
+export FROM_EMAIL='YOUR_EMAIL@YOURDOMAIN.COM'
+export DATABASE_URL='postgres://YOUR_DB_URL:YOUR_DB_PORT'
+
+export TWITTER_CONSUMER_KEY='YOUR_TWITTER_CONSUMER_KEY'
+export TWITTER_CONSUMER_SECRET='YOUR_TWITTER_CONSUMER_SECRET'
+export TWITTER_ACCESS_TOKEN='YOUR_TWITTER_ACCESS_TOKEN'
+export TWITTER_ACCESS_TOKEN_SECRET='YOUR_TWITTER_ACCESS_TOKEN_SECRET'
+
+export TWILIO_ACCOUNT_SID='YOUR_TWILIO_ACCOUNT_SID'
+export TWILIO_AUTH_TOKEN='YOUR_TWILIO_AUTH_TOKEN'
+export TWILIO_FROM_NUMBER='YOUR_TWILIO_NUMBER'
+export TWILIO_TO_NUMBER='YOUR_PHONE_NUMBER'
+export TWILIO_TWIML_URL='YOUR_TWILIO_TWIML_URL'
 ```
 
-configやto_addressesを編集。
+### 定期実行の設定をする
 
-### cronに登録する
+cronやHeroku Schedulerなどを使って登録する。
 
-crontabなどを使って登録する。
 
 ## 通知方法を追加したい時
 例として、slack通知を追加したいとする。
 
 ### config/config.yml に 通知用の設定を追加する。
+
 ```
 notifications:
   slack:
