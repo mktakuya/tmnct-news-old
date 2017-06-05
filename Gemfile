@@ -11,9 +11,6 @@ gem 'pg'
 # twitter
 gem 'twitter'
 
-# twilio
-gem 'twilio-ruby'
-
 # Testing
 gem 'rspec'
 gem 'rspec-expectations'
