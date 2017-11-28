@@ -15,3 +15,6 @@ gem 'twitter'
 gem 'rspec'
 gem 'rspec-expectations'
 gem 'rspec-its'
+
+# FAX
+gem 'twilio-ruby'
