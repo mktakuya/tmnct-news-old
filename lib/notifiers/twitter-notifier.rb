@@ -20,10 +20,8 @@ class TwitterNotifier
     if @news.img_urls.empty?
       client.update(tweet)
     else
-      media_ids = @news.img_urls.map do |img_url|
-        client.upload open(img_url)
-      end
-      client.update(tweet, {media_ids: media_ids.first(4).join(',')})
+      media = @news.img_urls.map { |img_url| open(img_url) }
+      client.update_with_media(tweet, media)
     end
   end
 end
