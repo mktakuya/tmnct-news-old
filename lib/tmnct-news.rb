@@ -79,11 +79,7 @@ class TmNCTNews
 
   def notify
     @notifiers.each do |notifier|
-      begin
-        notifier.notify
-      rescue
-        LOGGER.error("An error occurred on #{notifier.to_s}")
-      end
+      notifier.notify
     end
   end
 

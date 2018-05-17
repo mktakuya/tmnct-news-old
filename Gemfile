@@ -9,7 +9,7 @@ gem 'sequel'
 gem 'pg'
 
 # twitter
-gem 'twitter'
+gem 'twitter', '6.2.0'
 
 # Testing
 gem 'rspec'
